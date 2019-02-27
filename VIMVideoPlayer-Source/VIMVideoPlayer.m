@@ -90,6 +90,25 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     return self;
 }
 
+- (instancetype)initWithAudioEnabled:(bool)audioEnabled
+{
+    self = [super init];
+    if (self)
+    {
+        _volumeFadeDuration = DefaultVolumeFadeDuration;
+        _playableBufferLength = DefaultPlayableBufferLength;
+        
+        [self setupPlayer];
+        
+        [self addPlayerObservers];
+        
+        if (audioEnabled)
+            [self setupAudioSession];
+    }
+    
+    return self;
+}
+
 #pragma mark - Setup
 
 - (void)setupPlayer
@@ -107,7 +126,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 - (void)setupAudioSession
 {
     NSError *categoryError = nil;
-    BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
+    BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&categoryError];
     if (!success)
     {
         NSLog(@"Error setting audio session category: %@", categoryError);

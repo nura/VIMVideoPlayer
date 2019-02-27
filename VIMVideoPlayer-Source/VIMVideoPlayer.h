@@ -52,6 +52,8 @@
 @property (nonatomic, assign, getter=isLooping) BOOL looping;
 @property (nonatomic, assign, getter=isMuted) BOOL muted;
 
+- (instancetype)initWithAudioEnabled:(bool)audioEnabled;
+
 - (void)setURL:(NSURL *)URL;
 - (void)setPlayerItem:(AVPlayerItem *)playerItem;
 - (void)setAsset:(AVAsset *)asset;

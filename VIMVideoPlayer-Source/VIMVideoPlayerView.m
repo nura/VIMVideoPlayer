@@ -50,6 +50,20 @@
     return self;
 }
 
+- (instancetype)initAudioWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if (self)
+    {
+        VIMVideoPlayer *player = [[VIMVideoPlayer alloc] initWithAudioEnabled:true];
+        
+        [self setPlayer:player];
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];

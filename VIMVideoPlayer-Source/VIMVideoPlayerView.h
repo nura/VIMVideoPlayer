@@ -50,6 +50,8 @@
 
 @property (nonatomic, strong) VIMVideoPlayer *player;
 
+- (instancetype)initAudioWithFrame:(CGRect)frame;
+
 - (void)setPlayer:(VIMVideoPlayer *)player;
 
 - (void)setVideoFillMode:(NSString *)fillMode;
